@@ -11,39 +11,42 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <!-- Vendor styles -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/bower_components/animate.css/animate.min.css') }}">
-    <link rel="stylesheet" href="assets/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css">
+    <!-- Vendor CSS -->
+    <link href="{{ elixir('assets/vendors/bower_components/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css') }}" rel="stylesheet">
+    <!-- <link href="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">  -->
+    <link href="{{ elixir('assets/vendors/bower_components/dropzone/dist/min/dropzone.min.css') }}" rel="stylesheet">
+        <link href="{{ elixir('assets/vendors/farbtastic/farbtastic.css') }}" rel="stylesheet">
+        <link href="{{ elixir('assets/vendors/bower_components/chosen/chosen.css') }}" rel="stylesheet">
+        <link href="{{ elixir('assets/vendors/summernote/dist/summernote.css') }}" rel="stylesheet">
 
-    <!-- App styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <!-- CSS -->
+    <link href="{{ elixir('assets/css/app_1.min.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/css/app_2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    @yield('css')
 </head>
-<body data-ma-theme="cyan">
-    @yield('content');
-</body>
+<body>
+    @yield('content')
 <!-- Javascript -->
-<!-- Vendors -->
-<script src="assets/vendors/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="assets/vendors/bower_components/tether/dist/js/tether.min.js"></script>
-<script src="assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/vendors/bower_components/Waves/dist/waves.min.js"></script>
-<script src="assets/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="assets/vendors/bower_components/jquery-scrollLock/jquery-scrollLock.min.js"></script>
-@yield('dashboard')
+<!-- Javascript Libraries -->
+<script src="{{ elixir('assets/vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ elixir('assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-
-
-
-@yield('tables')
-
-
-<!-- App functions and actions -->
-<script src="assets/js/app.min.js"></script>
+<script src="{{ elixir('assets/vendors/bower_components/Waves/dist/waves.min.js') }}"></script>
+<!-- <script src="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
-<script type="text/javascript" src="assets/js/chat.js"></script>
-<script type="text/javascript" src="assets/js/post.js"></script>
+<script type="text/javascript" src="{{ elixir('assets/js/chat.js') }}"></script>
+<script src="{{ elixir('assets/vendors/bootstrap-growl/bootstrap-growl.min.js') }}"></script>
+
+<script src="{{ elixir('assets/js/app.min.js') }}"></script>
+@yield('js')
+
+</body>
+
+
+
+<!-- <script type="text/javascript" src="assets/js/post.js"></script> -->
 
 </html>

@@ -1,46 +1,44 @@
-<aside class="sidebar">
-    <div class="scrollbar-inner">
-        <div class="user">
-            <div class="user__info" data-toggle="dropdown">
-                <img class="user__img" src="assets/demo/img/profile-pics/8.jpg" alt="">
-                <div>
-                    <div class="user__name" id="name">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</div>
-                    <div class="user__email">{{ Auth::user()->type }}</div>
-                </div>
+<aside id="sidebar" class="sidebar c-overflow">
+    <div class="s-profile">
+        <a href="#" data-ma-action="profile-menu-toggle">
+            <div class="sp-pic">
+                <img src="{{ elixir('assets/img/demo/profile-pics/1.jpg') }}" alt="">
             </div>
 
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('profile') }}">View Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <div class="sp-info">
+                {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
+
+                <i class="zmdi zmdi-caret-down"></i>
             </div>
-        </div>
-        <ul class="navigation">
-            <li class="@yield('home_link')"><a href="{{ route('home') }}"><i class="material-icons">home</i> Home</a></li>
+        </a>
 
-            <li class="@yield('dashboard_link')"><a href="{{ route('dashboard') }}"><i class="material-icons">dashboard</i> Dashboard</a></li>
-
-
-            <li class="@yield('profile_link')"><a href="{{ route('profile') }}"><i class="material-icons">person</i> Profile</a></li>
-
-            <li class="@yield('chat_link')"><a href="{{ route('chat') }}"><i class="material-icons">chat</i> Chat</a></li>
-
-            <li class="@yield('alumni_link')"><a href="{{ route('alumni_management') }}"><i class="material-icons">group</i> Alumni Management</a></li>
-            @if(Auth::user()->type == 'Super Admin')
-            <li class="@yield('admin_link')"><a href="{{ route('admin_management') }}"><i class="material-icons">work</i> Admin Management</a></li>
-
-            @endif
-
-     
-
-
-            <li class="@yield('settings_link')"><a href="index.html"><i class="material-icons">settings</i> Settings</a></li>
-
-            <li class="@yield('logout_link')"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="material-icons">exit_to_app</i> Logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+        <ul class="main-menu">
+            <li>
+                <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
+            </li>
+            <li>
+                <a href="#"><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
+            </li>
+            <li>
+                <a href="#"><i class="zmdi zmdi-settings"></i> Settings</a>
+            </li>
+            <li>
+                <a href="#"><i class="zmdi zmdi-time-restore"></i> Logout</a>
             </li>
         </ul>
     </div>
-</aside>
+
+    <ul class="main-menu">
+        <li class="@yield('home_link')"><a href="/forums"><i class="zmdi zmdi-home"></i> Home</a></li>
+        <li class="@yield('profile_link')"><a href="{{ route('profile') }}"><i class="zmdi zmdi-face"></i> Profile</a></li>
+        <li class="@yield('chat_link')"><a href="{{ route('chat') }}"><i class="zmdi zmdi-comments"></i> Chat</a></li>
+        <li><a href="index.html"><i class="zmdi zmdi-accounts"></i> People</a></li>
+        <li><a href="index.html"><i class="zmdi zmdi-settings"></i> Settings</a></li>
+        <li><a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();"><i class="zmdi zmdi-long-arrow-tab"></i> Logout</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </ul>
+    </aside>

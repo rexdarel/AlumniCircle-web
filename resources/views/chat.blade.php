@@ -1,164 +1,199 @@
 @extends('layouts.app')
 @section('title')
-    Chat
+Profile
 @endsection
 @section('chat_link')
-    navigation__active
+active
 @endsection
 @section('content')
-    <main class="main">
-        @include('shared.header')
-        @include('shared.sidebar')
-            <section class="content">
-                <div class="content__inner">
+@include('shared.header')
+<style type="text/css">
+    #main {
+    padding-bottom: 0px;
+    padding-top: 60px
+}
+.messages {
+    height: calc(100vh - 90px);
+    position: relative;
+}
+</style>
+<section id="main">
+  @include('shared.sidebar')
+  <section id="content">
+    <div class="container container-alt">
+        <div class="messages card">
+            <div class="m-sidebar">
+                <header>
+                    <h2 class="hidden-xs">Messages</h2>
 
-                    <div class="messages">
-                        <div class="messages__sidebar">
-                            <div class="toolbar toolbar--inner mb-3">
-                                <div class="toolbar__label">MSU-IIT Alumni</div>
+                    <ul class="actions">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-comment-text"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown hidden-xs">
+                            <a href="#" data-toggle="dropdown">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
 
-                                <div class="actions toolbar__actions">
-                                    <a href="#" class="actions__item zmdi zmdi-plus"></a>
-                                </div>
-                            </div>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="#">Profile & Status</a>
+                                </li>
+                                <li>
+                                    <a href="#">Help</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </header>
 
-                            <div class="messages__search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                    <i class="form-group__bar"></i>
-                                </div>
-                            </div>
+                <div class="ms-search hidden-xs">
+                    <div class="fg-line">
+                        <i class="zmdi zmdi-search"></i>
 
-                            <div class="listview listview--hover">
-                                <a class="listview__item" href="#">
-                                    <img src="assets/demo/img/profile-pics/4.jpg" alt="" class="listview__img">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Davil Parnell</div>
-                                        <p>Fierent fastidii recteque ad pro</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item listview__item--active" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/8.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Ann Watkinson</div>
-                                        <p>Cum sociis natoque penatibus </p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/3.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Marse Walter</div>
-                                        <p>Suspendisse sapien ligula</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/2.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Jeremy Robbins</div>
-                                        <p>Phasellus porttitor tellus nec</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/4.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Reginald Horace</div>
-                                        <p>Quisque consequat arcu eget</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/5.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Shark Henry</div>
-                                        <p>Nam lobortis odio et leo maximu</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/2.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Paul Van Dack</div>
-                                        <p>Nam posuere purus sed velit auctor sodales</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/1.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">James Anderson</div>
-                                        <p>Vivamus imperdiet sagittis quam</p>
-                                    </div>
-                                </a>
-
-                                <a class="listview__item" href="#">
-                                    <div class="pull-left">
-                                        <img src="assets/demo/img/profile-pics/3.jpg" alt="" class="listview__img">
-                                    </div>
-                                    <div class="listview__content">
-                                        <div class="listview__heading">Kane Williams</div>
-                                        <p>Suspendisse justo nulla luctus nec</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="messages__body">
-                            <div class="messages__header">
-                                <div class="toolbar toolbar--inner mb-0">
-                                    <div class="toolbar__label" id="name_user">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</div>
-                           
-
-                                    <div class="actions toolbar__actions">
-                                        <i class="actions__item zmdi zmdi-search" data-ma-action="toolbar-search-open"></i>
-                                        <a href="#" class="actions__item zmdi zmdi-time"></a>
-                                        <a href="#" class="actions__item zmdi zmdi-info-outline"></a>
-                                        <div class="dropdown actions__item">
-                                            <i class="actions__item zmdi zmdi-more-vert" data-toggle="dropdown"></i>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">Refresh</a>
-                                                <a href="#" class="dropdown-item">Delete all</a>
-                                                <a href="#" class="dropdown-item">Settings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="toolbar__search">
-                                        <input type="text" placeholder="Search...">
-                                        <i class="toolbar__search__close zmdi zmdi-long-arrow-left" data-ma-action="toolbar-search-close"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="messages__content" id="chat-messages">
-
-                            </div>
-
-                            <div class="messages__reply">
-                                <textarea id="msg" class="messages__reply__text" placeholder="Type a message..."></textarea>
-                                <button id="send_button" class="btn btn-success btn--icon messages__reply__btn"><i class="zmdi zmdi-mail-send"></i></button>
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" placeholder="Search...">
                     </div>
                 </div>
-            </section>
-        </main>
+
+                <div class="list-group c-overflow">
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="{{ elixir('assets/img/demo/profile-pics/4.jpg') }}" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Davil Parnell</div>
+                            <small class="lgi-text">Fierent fastidii recteque ad pro</small>
+                            <small class="ms-time">05:00 PM</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media active" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Ann Watkinson</div>
+                            <small class="lgi-text">Cum sociis natoque penatibus </small>
+                            <small class="ms-time">10:02 AM</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Marse Walter</div>
+                            <small class="lgi-text">Suspendisse sapien ligula</small>
+                            <small class="ms-time">Yesterday</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Jeremy Robbins</div>
+                            <small class="lgi-text">Phasellus porttitor tellus nec</small>
+                            <small class="ms-time">23/04/16</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/4.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Reginald Horace</div>
+                            <small class="lgi-text">Quisque consequat arcu eget</small>
+                            <small class="ms-time">15/04/16</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/5.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Shark Henry</div>
+                            <small class="lgi-text">Nam lobortis odio et leo maximu</small>
+                            <small class="ms-time">30/03/16</small>
+                        </div>
+                    </a>
+
+                    <a class="list-group-item media" href="#">
+                        <div class="pull-left">
+                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
+                        </div>
+                        <div class="media-body">
+                            <div class="lgi-heading">Paul Van Dack</div>
+                            <small class="lgi-text">Nam posuere purus sed velit auctor sodales</small>
+                            <small class="ms-time">10/03/16</small>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="m-body">
+                <header class="mb-header">
+                    <div class="mbh-user clearfix">
+                        <img src="assets/img/demo/profile-pics/2.jpg" alt="">
+                        <div class="p-t-5" id="name">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</div>
+                    </div>
+
+                    <ul class="actions">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-refresh-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="#">Contact Info</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mute</a>
+                                </li>
+                                <li>
+                                    <a href="#">Clear Messages</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </header>
+
+                <div class="mb-list">
+                    <div class="mbl-messages c-overflow" id="chat-messages">
+                    </div>
+
+                    <div class="mbl-compose">
+                        <form role="form" id="form">
+                        <textarea placeholder="Type a message..." id="msg" required=""></textarea>
+
+                        <button id="send_button" type="submit"><i class="zmdi zmdi-mail-send"></i></button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
 @endsection

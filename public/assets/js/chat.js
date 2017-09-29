@@ -1,5 +1,5 @@
 var config = {
-                apiKey: "AIzaSyAnV-GbTfyhGutT_8MBfRpqSJByRXMZCy0",
+    apiKey: "AIzaSyAnV-GbTfyhGutT_8MBfRpqSJByRXMZCy0",
     authDomain: "alumni-chat-2e3d6.firebaseapp.com",
     databaseURL: "https://alumni-chat-2e3d6.firebaseio.com",
     projectId: "alumni-chat-2e3d6",
@@ -8,29 +8,23 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var name = "";   
-var name_user = document.getElementById('name_user').innerHTML;     
+var name = document.getElementById('name').innerHTML;        
+$(document).ready(function(){
 
-            $(document).ready(function(){
-                
-                    var database = firebase.database();
+    var database = firebase.database();
 
-                    var messagesRef = database.ref('chat/');
+    var messagesRef = database.ref('chat/');
 
-                    messagesRef.off();
-                    
-                    messagesRef.limitToLast(50).on('child_added', function(snapshot){
-                        
+    messagesRef.off();
 
-                        if(name_user == snapshot.child('name').val()){
-                            var data = "<div class='messages__item messages__item--right'><img src='assets/demo/img/profile-pics/1.jpg' class='messages__avatar' alt=''><div class='messages__details'><p>" + snapshot.child('message').val() + "</p><small>" + snapshot.child('name').val() + "</small></div></div>";
-
-                            $("#chat-messages").html($("#chat-messages").html() + data);
-                        }else{
-                            var data = "<div class='messages__item'><img src='assets/demo/img/profile-pics/1.jpg' class='messages__avatar' alt=''><div class='messages__details'><p>" + snapshot.child('message').val() + "</p><small>" + snapshot.child('name').val() + "</small></div></div>";
-
-                            $("#chat-messages").html($("#chat-messages").html() + data);
-                        }
+    messagesRef.limitToLast(50).on('child_added', function(snapshot){
+        //var data = "<div class='mblm-item mblm-item-left'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        if (name == snapshot.child('name').val()) {
+            var data = "<div class='mblm-item mblm-item-right'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        }else{
+            var data = "<div class='mblm-item mblm-item-left'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        }
+         $("#chat-messages").html($("#chat-messages").html() + data);
 
                         // Show the card fading-in and scroll to view the new message.
                         setTimeout(function() {document.getElementById('chat-messages').classList.add('visible')}, 1);
@@ -38,41 +32,38 @@ var name_user = document.getElementById('name_user').innerHTML;
                         list.scrollTop = list.scrollHeight;
                         //this.messageInput.focus();
                     });
-                    messagesRef.limitToLast(50).on('child_changed', function(snapshot){
-                        if(name_user == snapshot.child('name').val()){
-                            var data = "<div class='messages__item messages__item--right'><img src='assets/demo/img/profile-pics/1.jpg' class='messages__avatar' alt=''><div class='messages__details'><p>" + snapshot.child('message').val() + "</p><small>" + snapshot.child('name').val() + "</small></div></div>";
-
-                            $("#chat-messages").html($("#chat-messages").html() + data);
-                        }else{
-                            var data = "<div class='messages__item'><img src='assets/demo/img/profile-pics/1.jpg' class='messages__avatar' alt=''><div class='messages__details'><p>" + snapshot.child('message').val() + "</p><small>" + snapshot.child('name').val() + "</small></div></div>";
-
-                            $("#chat-messages").html($("#chat-messages").html() + data);
-                        }
-
+    messagesRef.limitToLast(50).on('child_changed', function(snapshot){
+        //var data = "<div class='mblm-item mblm-item-left'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        if (name == snapshot.child('name').val()) {
+            var data = "<div class='mblm-item mblm-item-right'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        }else{
+            var data = "<div class='mblm-item mblm-item-left'><div>" + snapshot.child('message').val() + "</div><small>" + snapshot.child('name').val() + "</small></div>";
+        }
+        $("#chat-messages").html($("#chat-messages").html() + data);
 
                         // Show the card fading-in and scroll to view the new message.
                         setTimeout(function() {document.getElementById('chat-messages').classList.add('visible')}, 1);
                         var list = document.getElementById('chat-messages');
                         list.scrollTop = list.scrollHeight;
+                        //this.messageInput.focus();
                     });
 
-                    //name = $("#name_user").innerHtml;
-                                  
-                $("#send_button").on('click', function(){
-                    var mess = $("#msg").val();
-
-                    
-                    firebase.database().ref('chat/' + Date.now()).set({
-                        message: mess,
-                        name: name_user
-                        
-                    });
-                    
-                    $("#msg").val("");
-                });
+    $("#form").submit(function(e) {
+        e.preventDefault();
+        var mess = $("#msg").val();
 
 
-               
+        firebase.database().ref('chat/' + Date.now()).set({
+            message: mess,
+            name: name
+
+        });
+
+        $("#msg").val("");
+    });
+
+
+
                /* const messaging = firebase.messaging();
                 var userid = $("#userid").val();
 
@@ -96,6 +87,6 @@ var name_user = document.getElementById('name_user').innerHTML;
                .catch(function(error){
                	console.error('Error Occured');
                })*/
-           
-         
-});
+
+
+           });

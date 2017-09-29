@@ -3,51 +3,97 @@
     Login
 @endsection
 @section('content')
-    <div class="login">
 
-            <div class="login__block active" id="l-login">
-                <div class="login__block__header">
-                    <i class="zmdi zmdi-account-circle"></i>
-                    Hi there! Please Sign in
-
-                    <div class="actions actions--inverse login__block__actions">
-                        <div class="dropdown">
-                            <i data-toggle="dropdown" class="zmdi zmdi-more-vert actions__item"></i>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" data-ma-action="login-switch" data-ma-target="#l-register" href="#">Create an account</a>
-                                <a class="dropdown-item" data-ma-action="login-switch" data-ma-target="#l-forget-password"  href="{{ route('password.request') }}">Forgot password?</a>
+<div class="login-content">
+            <!-- Login -->
+            <div class="lc-block toggled" id="l-login">
+                <div class="lcb-form">
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                        <div class="input-group m-b-20">
+                            <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                            <div class="fg-line">
+                                <input type="text" name="username" id="username" class="form-control" placeholder="firstname.lastname">
                             </div>
                         </div>
-                    </div>
+
+                        <div class="input-group m-b-20">
+                            <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                            <div class="fg-line">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                            </div>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                <i class="input-helper"></i>
+                                Keep me signed in
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-login btn-success btn-float"><i class="zmdi zmdi-arrow-forward"></i></button>
+                    </form>
                 </div>
-                <form method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <div class="login__block__body">
-                        <div class="form-group form-group--float form-group--left">
-                            <input type="text" class="form-control" name="username" id="username" value="{{ old('username') }}" required="">
-                            <label class="text-left">firstname.lastname</label>
-                            <i class="form-group__bar"></i>
-                        </div>
 
-                        <div class="form-group form-group--float form-group--left">
-                            <input type="password" class="form-control" name="password" id="password" value="{{ old('password') }}" required="">
-                            <label class="text-left">Password</label>
-                            <i class="form-group__bar"></i>
-                        </div>
-                        <label class="custom-control custom-checkbox align-self-start">
-                                <input type="checkbox" name="remember" class="custom-control-input" {{ old('remember') ? 'checked' : '' }}>
-                                <span class="custom-control-indicator"></span>
-                                <span class="custom-control-description">Remember me</span>
-                        </label><br><br>
-
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <hr>
-                        <p class="">Forgot password? <a href="">Reset here.</a></p>
-                        <h5>OR</h5>
-                        <p>No account yet? <a href="">Request here.</a></p>
-                    </div>
-                </form>
+                <div class="lcb-navigation">
+                    <a href="#" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>Register</span></a>
+                    <a href="{{ route('password.request') }}" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+                </div>
             </div>
-    </div>
-@endsection
+
+            <!-- Register -->
+            <div class="lc-block" id="l-register">
+                <div class="lcb-form">
+                    <div class="input-group m-b-20">
+                        <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                        <div class="fg-line">
+                            <input type="text" class="form-control" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="input-group m-b-20">
+                        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                        <div class="fg-line">
+                            <input type="text" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="input-group m-b-20">
+                        <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                        <div class="fg-line">
+                            <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-login btn-success btn-float"><i class="zmdi zmdi-check"></i></a>
+                </div>
+
+                <div class="lcb-navigation">
+                    <a href="#" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Sign in</span></a>
+                    <a href="#" data-ma-action="login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>Forgot Password</span></a>
+                </div>
+            </div>
+
+            <!-- Forgot Password -->
+            <div class="lc-block" id="l-forget-password">
+                <div class="lcb-form">
+                    <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+
+                    <div class="input-group m-b-20">
+                        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                        <div class="fg-line">
+                            <input type="text" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-login btn-success btn-float"><i class="zmdi zmdi-check"></i></a>
+                </div>
+
+                <div class="lcb-navigation">
+                    <a href="#" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>Sign in</span></a>
+                    <a href="#" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>Register</span></a>
+                </div>
+            </div>
+        </div>
+        @endsection

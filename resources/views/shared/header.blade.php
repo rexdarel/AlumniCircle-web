@@ -1,193 +1,87 @@
-<header class="header">
-                <div class="navigation-trigger hidden-xl-up" data-ma-action="aside-open" data-ma-target=".sidebar">
-                    <div class="navigation-trigger__inner">
-                        <i class="navigation-trigger__line"></i>
-                        <i class="navigation-trigger__line"></i>
-                        <i class="navigation-trigger__line"></i>
+echo "<script>var user = " . Auth::user()->firstname . ";</script>";
+
+<header id="header" class="clearfix" data-ma-theme="blue">
+            <ul class="h-inner">
+                <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
                     </div>
-                </div>
+                </li>
 
-                <div class="header__logo hidden-sm-down">
-                    <h1><a href="index.html">MSU-IIT Alumni</a></h1>
-                </div>
+                <li class="">
+                    <a href="index.html" class="m-l-10">
+                        <img src="{{ elixir('assets/img/demo/logo.png') }}" alt="">
+                    </a>
+                </li>
 
-              <!--   <form class="search">
-                    <div class="search__inner">
-                        <input type="search" class="search__text" placeholder="Search for people, files, documents...">
-                        <i class="zmdi zmdi-search search__helper" data-ma-action="search-close"></i>
-                    </div>
-                </form>
- -->
-                <ul class="top-nav">
-                    <li class="hidden-xl-up"><a href="#" data-ma-action="search-open"><i class="zmdi zmdi-search"></i></a></li>
+                <li class="pull-right">
+                    <ul class="hi-menu">
 
-                    <li class="dropdown top-nav__notifications">
-                        <a href="#" data-toggle="dropdown" class="top-nav__notify"><i class="material-icons">chat</i></a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
-                            <div class="listview listview--hover">
-                                <div class="listview__header">
-                                    Messages
+                        <li data-ma-action="search-open">
+                            <a href="#"><i class="him-icon zmdi zmdi-search"></i></a>
+                        </li>
 
-                                    <div class="actions">
-                                        <a href="messages.html" class="actions__item zmdi zmdi-plus"></a>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <i class="him-icon zmdi zmdi-comments"></i>
+                                <i class="him-counts">6</i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg pull-right">
+                                <div class="list-group">
+                                    <div class="lg-header">
+                                        Messages
                                     </div>
+                                    <div class="lg-body" id="header-msg">
+                                    </div>
+                                    <a class="view-more" href="#">View All</a>
                                 </div>
-
-                                <a href="#" class="listview__item">
-                                    <img src="demo/img/profile-pics/1.jpg" class="listview__img" alt="">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">
-                                            David Belle <small>12:01 PM</small>
-                                        </div>
-                                        <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="listview__item">
-                                    <img src="demo/img/profile-pics/2.jpg" class="listview__img" alt="">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">
-                                            Jonathan Morris
-                                            <small>02:45 PM</small>
-                                        </div>
-                                        <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="listview__item">
-                                    <img src="demo/img/profile-pics/3.jpg" class="listview__img" alt="">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">
-                                            Fredric Mitchell Jr.
-                                            <small>08:21 PM</small>
-                                        </div>
-                                        <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="listview__item">
-                                    <img src="demo/img/profile-pics/4.jpg" class="listview__img" alt="">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">
-                                            Glenn Jecobs
-                                            <small>08:43 PM</small>
-                                        </div>
-                                        <p>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</p>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="listview__item">
-                                    <img src="demo/img/profile-pics/5.jpg" class="listview__img" alt="">
-
-                                    <div class="listview__content">
-                                        <div class="listview__heading">
-                                            Bill Phillips
-                                            <small>11:32 PM</small>
-                                        </div>
-                                        <p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
-                                    </div>
-                                </a>
-
-                                <a href="#" class="view-more">View all messages</a>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#">
+                                <i class="him-icon zmdi zmdi-notifications"></i>
+                                <i class="him-counts">9</i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg pull-right">
+                                <div class="list-group him-notification">
+                                    <div class="lg-header">
+                                        Notification
 
-                    <li class="dropdown top-nav__notifications">
-                        <a href="#" data-toggle="dropdown" class="top-nav__notify">
-                            <i class="material-icons">notifications</i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
-                            <div class="listview listview--hover">
-                                <div class="listview__header">
-                                    Notifications
-
-                                    <div class="actions">
-                                        <a href="#" class="actions__item zmdi zmdi-check-all" data-ma-action="notifications-clear"></a>
+                                        <ul class="actions">
+                                            <li class="dropdown">
+                                                <a href="#" data-ma-action="clear-notification">
+                                                    <i class="zmdi zmdi-check-all"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div class="lg-body">
+                                        <a class="list-group-item media" href="#">
+                                            <div class="pull-left">
+                                                <img class="lgi-img" src="assets/img/demo/profile-pics/1.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lgi-heading">David Belle</div>
+                                                <small class="lgi-text">Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <a class="view-more" href="#">View Previous</a>
                                 </div>
-
-                                <div class="listview__scroll scrollbar-inner">
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/1.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">David Belle</div>
-                                            <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/2.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Jonathan Morris</div>
-                                            <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/3.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Fredric Mitchell Jr.</div>
-                                            <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/4.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Glenn Jecobs</div>
-                                            <p>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/5.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Bill Phillips</div>
-                                            <p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/1.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">David Belle</div>
-                                            <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/2.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Jonathan Morris</div>
-                                            <p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="listview__item">
-                                        <img src="demo/img/profile-pics/3.jpg" class="listview__img" alt="">
-
-                                        <div class="listview__content">
-                                            <div class="listview__heading">Fredric Mitchell Jr.</div>
-                                            <p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="p-1"></div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </header>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Top Search Content -->
+            <div class="h-search-wrap">
+                <div class="hsw-inner">
+                    <i class="hsw-close zmdi zmdi-arrow-left" data-ma-action="search-close"></i>
+                    <input type="text">
+                </div>
+            </div>
+        </header>
