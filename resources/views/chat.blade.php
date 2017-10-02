@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title')
-Profile
+Chat
 @endsection
 @section('chat_link')
 active
 @endsection
 @section('content')
-@include('shared.header')
+
 <style type="text/css">
     #main {
     padding-bottom: 0px;
@@ -17,10 +17,8 @@ active
     position: relative;
 }
 </style>
-<section id="main">
-  @include('shared.sidebar')
-  <section id="content">
-    <div class="container container-alt">
+
+    <div class="container container-alt" data-pjax>
         <div class="messages card">
             <div class="m-sidebar">
                 <header>
@@ -194,6 +192,5 @@ active
             </div>
         </div>
     </div>
-</section>
-</section>
+
 @endsection

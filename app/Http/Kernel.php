@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+
     ];
 
     /**
@@ -59,5 +60,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'checkstatus' => \App\Http\Middleware\CheckStatusMiddleware::class,
     ];
 }

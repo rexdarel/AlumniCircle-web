@@ -6,10 +6,7 @@ Home
   active
 @endsection
 @section('content')
-@include('shared.header')
-<section id="main">
-  @include('shared.sidebar')
-  <section id="content">
+
     <div class="container">
       <div class="block-header">
         <h2>Wall
@@ -207,6 +204,5 @@ Home
     </div>
   </div>
 </div>
-</section>
-</section>
+
 @endsection

@@ -2,7 +2,7 @@
     <div class="s-profile">
         <a href="#" data-ma-action="profile-menu-toggle">
             <div class="sp-pic">
-                <img src="{{ elixir('assets/img/demo/profile-pics/1.jpg') }}" alt="">
+                <img src="storage/{{ Auth::user()->avatar }}" alt="">
             </div>
 
             <div class="sp-info">
@@ -30,13 +30,16 @@
 
     <ul class="main-menu">
         <li class="@yield('home_link')"><a href="/forums"><i class="zmdi zmdi-home"></i> Home</a></li>
-        <li class="@yield('profile_link')"><a href="{{ route('profile') }}"><i class="zmdi zmdi-face"></i> Profile</a></li>
-        <li class="@yield('chat_link')"><a href="{{ route('chat') }}"><i class="zmdi zmdi-comments"></i> Chat</a></li>
-        <li><a href="index.html"><i class="zmdi zmdi-accounts"></i> People</a></li>
+        @if(Auth::user()->role->display_name == 'Administrator')
+        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="zmdi zmdi-chart"></i> Dashboard</a></li>
+        @endif
+        <li class="@yield('profile_link')"><a data-pjax href="{{ route('profile') }}"><i class="zmdi zmdi-face"></i> Profile</a></li>
+        <li class="@yield('chat_link')"><a data-pjax href="{{ route('chat') }}"><i class="zmdi zmdi-comments"></i> Chat</a></li>
+        <li class="@yield('people_link')"><a href="{{ route('people') }}"><i class="zmdi zmdi-accounts"></i> People</a></li>
         <li><a href="index.html"><i class="zmdi zmdi-settings"></i> Settings</a></li>
         <li><a href="{{ route('logout') }}"
             onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();"><i class="zmdi zmdi-long-arrow-tab"></i> Logout</a></li>
+            document.getElementById('logout-form').submit();"><i class="zmdi zmdi-power"></i> Logout</a></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>

@@ -19,9 +19,9 @@ echo "<script>var user = " . Auth::user()->firstname . ";</script>";
                 <li class="pull-right">
                     <ul class="hi-menu">
 
-                        <li data-ma-action="search-open">
+                        <!-- <li data-ma-action="search-open">
                             <a href="#"><i class="him-icon zmdi zmdi-search"></i></a>
-                        </li>
+                        </li> -->
 
                         <li class="dropdown">
                             <a data-toggle="dropdown" href="#">
@@ -73,15 +73,18 @@ echo "<script>var user = " . Auth::user()->firstname . ";</script>";
                                 </div>
                             </div>
                         </li>
+                        @if(Auth::user()->role->display_name == 'Administrator')
+        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="him-icon zmdi zmdi-chart"></i></a></li>
+        @endif
                     </ul>
                 </li>
             </ul>
 
             <!-- Top Search Content -->
-            <div class="h-search-wrap">
+            <!-- <div class="h-search-wrap">
                 <div class="hsw-inner">
                     <i class="hsw-close zmdi zmdi-arrow-left" data-ma-action="search-close"></i>
                     <input type="text">
                 </div>
-            </div>
+            </div> -->
         </header>

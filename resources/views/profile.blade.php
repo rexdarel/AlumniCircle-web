@@ -6,17 +6,22 @@ Profile
 active
 @endsection
 @section('content')
-@include('shared.header')
+
 <style type="text/css">
 #main {
     padding-bottom: 110px;
-    padding-top: 50px
+    padding-top: 50px;
+}
+.pv-main {
+        border: 5px solid rgba(0, 0, 0, .14);
+}
+.profile-view .pv-header {
+    background-image: url('assets/img/headers/profile/1.jpg');
+    height: 300px;
 }
 </style>
-<section id="main">
-  @include('shared.sidebar')
-  <section id="content">
-    <div class="container container-alt">
+
+    <div class="container container-alt" data-pjax>
 
         <!-- <div class="block-header">
             <h2>Malinda Hollaway
@@ -46,7 +51,7 @@ active
         <div class="row">
             <div class="card profile-view">
                 <div class="pv-header">
-                    <img src="assets/img/demo/profile-pics/profile-pic.jpg" class="pv-main" alt="">
+                    <img id="photo-avatar" src="storage/{{ $user->avatar }}" class="pv-main" alt="">
                 </div>
 
                 <div class="pv-body">
@@ -58,10 +63,23 @@ active
                         <li><i class="zmdi zmdi-phone"></i> +11 55694785</li>
                     </ul>
 
-                    <a href="#" class="pv-follow-btn">Follow</a>
+                    
+                    <a href="#" class="pv-follow-btn">Update Profile</a>
                 </div>
             </div>
         </div>
+        <!-- <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <img src="storage/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
+            <h2>{{ $user->firstname }}'s Profile</h2>
+            <form enctype="multipart/form-data" action="/profile" method="POST">
+                <label>Update Profile Image</label>
+                <input type="file" name="avatar">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" class="pull-right btn btn-sm btn-primary">
+            </form>
+        </div>
+    </div> -->
         <div class="row">
 
             <div class="card">
@@ -121,11 +139,11 @@ active
                                                 </dl>
                                                 <dl class="dl-horizontal">
                                                     <dt>Email Address</dt>
-                                                    <dd>malinda.h@gmail.com</dd>
+                                                    <dd>{{ Auth::user()->email }}</dd>
                                                 </dl>
                                                 <dl class="dl-horizontal">
-                                                    <dt>Twitter</dt>
-                                                    <dd>@malinda</dd>
+                                                    <dt>Social Accounts</dt>
+                                                    <dd></dd>
                                                 </dl>
                                                 <dl class="dl-horizontal">
                                                     <dt>Skype</dt>
@@ -158,6 +176,5 @@ active
                 </div>
             </div>
         </div>
-    </section>
-</section>
 @endsection
+
