@@ -74,7 +74,7 @@ echo "<script>var user = " . Auth::user()->firstname . ";</script>";
                             </div>
                         </li>
                         @if(Auth::user()->role->display_name == 'Administrator')
-        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="him-icon zmdi zmdi-chart"></i></a></li>
+        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="him-icon zmdi zmdi-boat"></i></a></li>
         @endif
                     </ul>
                 </li>

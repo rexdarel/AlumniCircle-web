@@ -31,7 +31,8 @@
     <ul class="main-menu">
         <li class="@yield('home_link')"><a href="/forums"><i class="zmdi zmdi-home"></i> Home</a></li>
         @if(Auth::user()->role->display_name == 'Administrator')
-        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="zmdi zmdi-chart"></i> Dashboard</a></li>
+        <li class=""><a href="{{ route('voyager.dashboard') }}"><i class="zmdi zmdi-boat"></i> Dashboard</a></li>
+            <li class="@yield('charts_link')"><a data-pjax href="{{ route('charts') }}"><i class="zmdi zmdi-chart"></i> Charts</a></li>
         @endif
         <li class="@yield('profile_link')"><a data-pjax href="{{ route('profile') }}"><i class="zmdi zmdi-face"></i> Profile</a></li>
         <li class="@yield('chat_link')"><a data-pjax href="{{ route('chat') }}"><i class="zmdi zmdi-comments"></i> Chat</a></li>
