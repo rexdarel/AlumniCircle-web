@@ -51,16 +51,20 @@ active
         <div class="row">
             <div class="card profile-view">
                 <div class="pv-header">
-                    <img id="photo-avatar" src="storage/{{ $user->avatar }}" class="pv-main" alt="">
+                    <img id="photo-avatar" src="storage/{{ Auth::user()->avatar }}" class="pv-main" alt="">
                 </div>
 
                 <div class="pv-body">
                     <h2>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h2>
-                    <small>{{ Auth::user()->bio }}</small>
+                    <small>{{ Auth::user()->stat->name }}</small>
 
                     <ul class="pv-contact">
                         <li><i class="zmdi zmdi-pin"></i> Jupitor</li>
-                        <li><i class="zmdi zmdi-phone"></i> +11 55694785</li>
+                        @foreach(Auth::user()->contacts as $contact)
+                        @if($contact->isPrimary == 1)
+                        <li><i class="zmdi zmdi-phone"></i> {{ $contact->number }}</li>
+                        @endif
+                        @endforeach
                     </ul>
 
                     
@@ -133,10 +137,19 @@ active
                                         </div>
                                         <div class="pmbb-body p-l-30">
                                             <div class="pmbb-view">
+                                                @foreach(Auth::user()->contacts as $contact)
+                                                    @if($contact->isPrimary == 1)
                                                 <dl class="dl-horizontal">
-                                                    <dt>Mobile Phone</dt>
-                                                    <dd>00971 12345678 9</dd>
+                                                    <dt>Primary Contact</dt>
+                                                    <dd>{{ $contact->number }}</dd>
                                                 </dl>
+                                                @else
+                                                <dl class="dl-horizontal">
+                                                    <dt>Alternative Contact</dt>
+                                                    <dd>{{ $contact->number }}</dd>    
+                                                </dl>
+                                                @endif
+                                                    @endforeach
                                                 <dl class="dl-horizontal">
                                                     <dt>Email Address</dt>
                                                     <dd>{{ Auth::user()->email }}</dd>

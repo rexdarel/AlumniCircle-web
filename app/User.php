@@ -15,7 +15,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'firstname', 'middlename', 'lastname', 'gender', 'birthdate', 'username', 'password', 'status', 'type',
+        'firstname', 'middlename', 'lastname', 'gender', 'birthdate', 'username', 'password', 'status', 'type','status_id',
     ];
 
     /**
@@ -26,5 +26,15 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function contacts()
+    {
+        return $this->hasMany('App\Contact');
+    }
+
+    public function stat()
+    {
+        return $this->belongsTo('App\Status', 'status_id', 'id');
+    }
 
 }

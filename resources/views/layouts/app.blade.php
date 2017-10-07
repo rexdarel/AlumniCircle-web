@@ -27,7 +27,7 @@
     <link href="{{ elixir('assets/css/app_2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     @yield('css')
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="fa6613ac-d32d-4635-b65f-505c34f90d8b";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <!-- <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="fa6613ac-d32d-4635-b65f-505c34f90d8b";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> -->
     
 
 </head>
@@ -89,6 +89,7 @@
                 });
             });
 </script>
+<!--Load the AJAX API-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
@@ -119,9 +120,16 @@
         var options = {'title':'How Much Pizza I Ate Last Night',
             'width':400,
             'height':300};
-
+        var chart_div = document.getElementById('chart_div');
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.PieChart(chart_div);
+
+        // Wait for the chart to finish drawing before calling the getImageURI() method.
+        google.visualization.events.addListener(chart, 'ready', function () {
+            chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+            console.log(chart_div.innerHTML);
+            document.getElementById('png').outerHTML = '<a href="' + chart.getImageURI() + '" target="_blank" class="btn bgm-blue btn-float waves-effect"><i class="zmdi zmdi-download"></i></a>';
+        });
         chart.draw(data, options);
     }
 </script>

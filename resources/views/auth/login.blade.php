@@ -62,25 +62,33 @@
                                 <strong>Oppss! </strong>{{ session('errors_login') }}
                             </div>
                     @endif
+                    @if($errors->has('username') || $errors->has('password'))
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <strong>Oppss! </strong>{{ $errors->first('password') }}{{ $errors->first('username') }}
+                            </div>
+                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="input-group m-b-20">
                             <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
                             <div class="fg-line">
-                                <input type="text" name="username" id="username" class="form-control" placeholder="firstname.lastname">
+                                <input type="text"  name="username" id="username" class="form-control" placeholder="firstname.lastname" value="{{ old('username') }}" required="">
+
                             </div>
                         </div>
 
                         <div class="input-group m-b-20">
                             <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
                             <div class="fg-line">
-                                <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="password" required="" value="{{ old('password') }}">
+                                
                             </div>
                         </div>
 
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="">
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <i class="input-helper"></i>
                                 Keep me signed in
                             </label>
