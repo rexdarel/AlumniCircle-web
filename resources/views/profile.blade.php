@@ -16,38 +16,13 @@ active
         border: 5px solid rgba(0, 0, 0, .14);
 }
 .profile-view .pv-header {
-    background-image: url('assets/img/headers/profile/1.jpg');
+    background-image: url('{{ elixir('assets/img/headers/profile/1.jpg') }}');
     height: 300px;
 }
 </style>
 
     <div class="container container-alt" data-pjax>
 
-        <!-- <div class="block-header">
-            <h2>Malinda Hollaway
-                <small>Web/UI Developer, Edinburgh, Scotland</small>
-            </h2>
-
-            <ul class="actions m-t-20 hidden-xs">
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown">
-                        <i class="zmdi zmdi-more-vert"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="#">Privacy Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Account Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Other Settings</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div> -->
         <div class="row">
             <div class="card profile-view">
                 <div class="pv-header">
@@ -56,7 +31,7 @@ active
 
                 <div class="pv-body">
                     <h2>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h2>
-                    <small>{{ Auth::user()->stat->name }}</small>
+                    <small>{{ Auth::user()->role->display_name }}</small>
 
                     <ul class="pv-contact">
                         <li><i class="zmdi zmdi-pin"></i> Jupitor</li>
@@ -68,22 +43,11 @@ active
                     </ul>
 
                     
-                    <a href="#" class="pv-follow-btn">Update Profile</a>
+                    <a href="#" class="pv-follow-btn">Change Profile Image</a>
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <img src="storage/{{ $user->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-            <h2>{{ $user->firstname }}'s Profile</h2>
-            <form enctype="multipart/form-data" action="/profile" method="POST">
-                <label>Update Profile Image</label>
-                <input type="file" name="avatar">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="submit" class="pull-right btn btn-sm btn-primary">
-            </form>
-        </div>
-    </div> -->
+
         <div class="row">
 
             <div class="card">
@@ -93,78 +57,125 @@ active
                             <li class="active"><a href="#home9" aria-controls="home9" role="tab"
                               data-toggle="tab">About</a></li>
                               <li role="presentation"><a href="#profile9" aria-controls="profile9"
-                                 role="tab" data-toggle="tab">Profile</a></li>
+                                 role="tab" data-toggle="tab">Employment</a></li>
                                  <li role="presentation"><a href="#messages9" aria-controls="messages9"
-                                     role="tab" data-toggle="tab">Messages</a></li>
+                                     role="tab" data-toggle="tab">DontKnow</a></li>
                                  </ul>
 
                                  <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active animated fadeInRight in"
                                     id="home9">
-                                    <div class="pmb-block">
-                                        <div class="pmbb-header">
-                                            <h2><i class="zmdi zmdi-account m-r-10"></i> Basic Information</h2>
-                                        </div>
-                                        <div class="pmbb-body p-l-30">
-                                            <div class="pmbb-view">
-                                                <dl class="dl-horizontal">
-                                                    <dt>Full Name</dt>
-                                                    <dd>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Gender</dt>
-                                                    <dd>{{ Auth::user()->gender }}</dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Birthday</dt>
-                                                    <dd>{{ Auth::user()->birthdate }}</dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Username</dt>
-                                                    <dd>{{ Auth::user()->username }}</dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Role</dt>
-                                                    <dd>{{ Auth::user()->role->display_name }}</dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <div class="card-header bgm-cyan">
+                                                    <h2>Basic Information
+                                                        <small>You can type anything here...</small>
+                                                    </h2>
+                                                    <ul class="actions actions-alt">
+                                                        <li class="dropdown">
+                                                            <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                <i class="zmdi zmdi-more-vert"></i>
+                                                            </a>
 
-                                    <div class="pmb-block">
-                                        <div class="pmbb-header">
-                                            <h2><i class="zmdi zmdi-phone m-r-10"></i> Contact Information</h2>
-                                        </div>
-                                        <div class="pmbb-body p-l-30">
-                                            <div class="pmbb-view">
-                                                @foreach(Auth::user()->contacts as $contact)
-                                                    @if($contact->isPrimary == 1)
-                                                <dl class="dl-horizontal">
-                                                    <dt>Primary Contact</dt>
-                                                    <dd>{{ $contact->number }}</dd>
-                                                </dl>
-                                                @else
-                                                <dl class="dl-horizontal">
-                                                    <dt>Alternative Contact</dt>
-                                                    <dd>{{ $contact->number }}</dd>    
-                                                </dl>
-                                                @endif
-                                                    @endforeach
-                                                <dl class="dl-horizontal">
-                                                    <dt>Email Address</dt>
-                                                    <dd>{{ Auth::user()->email }}</dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Social Accounts</dt>
-                                                    <dd></dd>
-                                                </dl>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Skype</dt>
-                                                    <dd>malinda.hollaway</dd>
-                                                </dl>
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <li>
+                                                                    <a href="#">Update</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="card-body card-padding">
+                                                    <div class="pmb-block">
+                                                        <div class="pmbb-body p-l-30">
+                                                            <div class="pmbb-view">
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Full Name</dt>
+                                                                    <dd>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Gender</dt>
+                                                                    <dd>{{ Auth::user()->gender }}</dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Birthday</dt>
+                                                                    <dd>{{ Auth::user()->birthdate }}</dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Username</dt>
+                                                                    <dd>{{ Auth::user()->username }}</dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Role</dt>
+                                                                    <dd>{{ Auth::user()->role->display_name }}</dd>
+                                                                </dl>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <div class="card-header bgm-cyan">
+                                                    <h2>Contact Information
+                                                        <small>You can type anything here...</small>
+                                                    </h2>
+                                                    <ul class="actions actions-alt">
+                                                        <li class="dropdown">
+                                                            <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                                                <i class="zmdi zmdi-more-vert"></i>
+                                                            </a>
+
+                                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                                <li>
+                                                                    <a href="#">Update</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="card-body card-padding">
+                                                    <div class="pmb-block">
+                                                        <div class="pmbb-body p-l-30">
+                                                            <div class="pmbb-view">
+                                                                @foreach(Auth::user()->contacts as $contact)
+                                                                    @if($contact->isPrimary == 1)
+                                                                        <dl class="dl-horizontal">
+                                                                            <dt>Primary Contact</dt>
+                                                                            <dd>{{ $contact->number }}</dd>
+                                                                        </dl>
+                                                                    @else
+                                                                        <dl class="dl-horizontal">
+                                                                            <dt>Alternative Contact</dt>
+                                                                            <dd>{{ $contact->number }}</dd>
+                                                                        </dl>
+                                                                    @endif
+                                                                @endforeach
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Email Address</dt>
+                                                                    <dd>{{ Auth::user()->email }}</dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Social Accounts</dt>
+                                                                    <dd></dd>
+                                                                </dl>
+                                                                <dl class="dl-horizontal">
+                                                                    <dt>Skype</dt>
+                                                                    <dd>malinda.hollaway</dd>
+                                                                </dl>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
 
 
                                 </div>
