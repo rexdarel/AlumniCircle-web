@@ -36,9 +36,7 @@
     <section id="main">
         @include('shared.sidebar')
         <section id="content">
-            <div id="pjax-container">
             @yield('content')
-        </div>
         </section>
     </section>
     

@@ -173,11 +173,6 @@ active
                                             </div>
                                         </div>
 
-
-
-
-
-
                                 </div>
                                 <div role="tabpanel" class="tab-pane animated fadeInRight" id="profile9">
                                     <p>Morbi mattis ullamcorper velit. Etiam rhoncus. Phasellus leo dolor,
