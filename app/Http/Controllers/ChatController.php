@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class ChatController extends Controller
 {
@@ -23,6 +24,6 @@ class ChatController extends Controller
      */
     public function index()
     {
-        return view('chat');
+        return view('chat', array('users' => User::all()));
     }
 }

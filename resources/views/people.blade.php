@@ -9,8 +9,8 @@
     <div class="container container-alt">
 
         <div class="block-header">
-            <h2>Contacts
-                <small>Manage your contact information</small>
+            <h2>People
+                <small>List of alumni currently registered to the site</small>
             </h2>
 
             <ul class="actions m-t-20 hidden-xs">
@@ -34,8 +34,6 @@
             </ul>
         </div>
 
-        <!-- Add button -->
-        <button class="btn btn-float btn-danger m-btn"><i class="zmdi zmdi-plus"></i></button>
 
         <div class="card">
             <div class="action-header clearfix">
@@ -92,6 +90,7 @@
                 <div class="contacts clearfix row">
                     @foreach ($users as $user)
                         @if($user->status == 'APPROVED')
+                            @if($user->id != Auth::user()->id)
                             <div class="col-md-2 col-sm-4 col-xs-6">
                                 <div class="c-item">
                                     <a href="#" class="ci-avatar">
@@ -107,21 +106,13 @@
                                             <small style="color: #2196F3">{{ $user->role->display_name }}</small>
                                         @endif
                                     </div>
-
-                                    <div class="c-footer">
-                                        <button class="waves-effect"><i class="zmdi zmdi-person-add"></i> View
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
+                            @endif
                         @else
                         @endif
                     @endforeach
 
-                </div>
-
-                <div class="load-more">
-                    <a href="#"><i class="zmdi zmdi-refresh-alt"></i> Load More...</a>
                 </div>
             </div>
         </div>

@@ -37,7 +37,7 @@
         <li class="@yield('profile_link')"><a data-pjax href="{{ route('profile') }}"><i class="zmdi zmdi-face"></i> Profile</a></li>
         <li class="@yield('chat_link')"><a data-pjax href="{{ route('chat') }}"><i class="zmdi zmdi-comments"></i> Chat</a></li>
         <li class="@yield('people_link')"><a href="{{ route('people') }}"><i class="zmdi zmdi-accounts"></i> People</a></li>
-        <li><a href="index.html"><i class="zmdi zmdi-settings"></i> Settings</a></li>
+        <li class="@yield('settings_link')"><a href="{{ route('settings') }}"><i class="zmdi zmdi-settings"></i> Settings</a></li>
         <li><a href="{{ route('logout') }}"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"><i class="zmdi zmdi-power"></i> Logout</a></li>

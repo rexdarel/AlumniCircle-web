@@ -21,6 +21,8 @@
     <link href="{{ elixir('assets/vendors/farbtastic/farbtastic.css') }}" rel="stylesheet">
     <link href="{{ elixir('assets/vendors/bower_components/chosen/chosen.css') }}" rel="stylesheet">
     <link href="{{ elixir('assets/vendors/summernote/dist/summernote.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/vendors/bower_components/chosen/chosen.css') }}" rel="stylesheet">
 
     <!-- CSS -->
     <link href="{{ elixir('assets/css/app_1.min.css') }}" rel="stylesheet">
@@ -45,14 +47,18 @@
 </body>
 <!-- Javascript -->
     <!-- Javascript Libraries -->
-    <!-- <script src="{{ elixir('assets/vendors/bower_components/jquery/dist/jquery.min.js') }}"></script> -->
+    <script src="{{ elixir('assets/vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> -->
     <script src="{{ elixir('assets/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/1.9.6/jquery.pjax.min.js"></script> -->
     
     <script src="{{ elixir('assets/vendors/bower_components/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ elixir('assets/vendors/bower_components/Waves/dist/waves.min.js') }}"></script>
+    <script src="{{ elixir('assets/vendors/bower_components/autosize/dist/autosize.min.js') }}"></script>
+    <script src="{{ elixir('assets/vendors/bower_components/moment/min/moment.min.js') }}"></script>
+    <script src="{{ elixir('assets/vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ elixir('assets/vendors/bower_components/chosen/chosen.jquery.js') }}"></script>
     <!-- <script src="assets/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <script type="text/javascript" src="{{ elixir('assets/js/chat.js') }}"></script>

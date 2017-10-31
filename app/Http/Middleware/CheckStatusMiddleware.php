@@ -16,7 +16,7 @@ class CheckStatusMiddleware
     {
         $response = $next($request);
         //If the status is not approved redirect to login 
-        if(Auth::check() && Auth::user()->stat->name != 'APPROVED'){
+        if(Auth::check() && Auth::user()->status == 'PENDING'){
             Auth::logout();
             return redirect('/login')->with('errors_login', 'It seems like your registration is under in the verfication process. We will send you a message as soon as we verified your request.');
         }

@@ -26,6 +26,7 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::get('/chat', 'ChatController@index')->name('chat');
 Route::get('/charts', 'ChartsController@index')->name('charts');
 Route::get('/people', 'PeopleController@index')->name('people');
+Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::post('profile', 'ProfileController@update_avatar');
 //Route::get('/alumni', 'AlumniController@index')->name('alumni_management');
 //Route::get('/shit', 'AdminController@index')->name('shit');

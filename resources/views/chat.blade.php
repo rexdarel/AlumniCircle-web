@@ -58,83 +58,21 @@ active
                     </div>
                 </div>
 
-                <div class="list-group c-overflow">
+                <div class="list-group" style="overflow-y: scroll;">
+                    @foreach ($users as $user)
+                        @if($user->status == 'APPROVED' && $user->id != Auth::user()->id)
                     <a class="list-group-item media" href="#">
                         <div class="pull-left">
-                            <img src="{{ elixir('assets/img/demo/profile-pics/4.jpg') }}" alt="" class="lgi-img">
+                            <img src="storage/{{ $user->avatar }}" alt="" class="lgi-img">
                         </div>
                         <div class="media-body">
-                            <div class="lgi-heading">Davil Parnell</div>
+                            <div class="lgi-heading">{{ $user->firstname }} {{ $user->lastname }}</div>
                             <small class="lgi-text">Fierent fastidii recteque ad pro</small>
                             <small class="ms-time">05:00 PM</small>
                         </div>
                     </a>
-
-                    <a class="list-group-item media active" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Ann Watkinson</div>
-                            <small class="lgi-text">Cum sociis natoque penatibus </small>
-                            <small class="ms-time">10:02 AM</small>
-                        </div>
-                    </a>
-
-                    <a class="list-group-item media" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/3.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Marse Walter</div>
-                            <small class="lgi-text">Suspendisse sapien ligula</small>
-                            <small class="ms-time">Yesterday</small>
-                        </div>
-                    </a>
-
-                    <a class="list-group-item media" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Jeremy Robbins</div>
-                            <small class="lgi-text">Phasellus porttitor tellus nec</small>
-                            <small class="ms-time">23/04/16</small>
-                        </div>
-                    </a>
-
-                    <a class="list-group-item media" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/4.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Reginald Horace</div>
-                            <small class="lgi-text">Quisque consequat arcu eget</small>
-                            <small class="ms-time">15/04/16</small>
-                        </div>
-                    </a>
-
-                    <a class="list-group-item media" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/5.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Shark Henry</div>
-                            <small class="lgi-text">Nam lobortis odio et leo maximu</small>
-                            <small class="ms-time">30/03/16</small>
-                        </div>
-                    </a>
-
-                    <a class="list-group-item media" href="#">
-                        <div class="pull-left">
-                            <img src="assets/img/demo/profile-pics/2.jpg" alt="" class="lgi-img">
-                        </div>
-                        <div class="media-body">
-                            <div class="lgi-heading">Paul Van Dack</div>
-                            <small class="lgi-text">Nam posuere purus sed velit auctor sodales</small>
-                            <small class="ms-time">10/03/16</small>
-                        </div>
-                    </a>
+                    @endif
+                    @endforeach
                 </div>
 
             </div>
