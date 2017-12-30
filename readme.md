@@ -1,3 +1,19 @@
+<h1>Features</h1>
+
+<h3>1. Chat</h3> <p>alumni users can chat in a 1 conversation channel.</p>
+<h3>2. Timeline </h3> <p>alumni users can post for announcements, job hiring</p>
+<h3>3. Information Management</h3> <p>users can manage their information. Can update their employment status, addresses, contact information.</p>
+<h3>4. Sign in and Sign up <h3>
+
+<h1>Thanks to</h1>
+<h3>Google Firebase</h3>
+<h3>Laravel</h3>
+<h3>The Devdojo Chatter</h3>
+<h3>Laravel Voyager</h3>
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
